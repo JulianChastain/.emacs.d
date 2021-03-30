@@ -81,14 +81,16 @@
 (straight-use-package 'flycheck)
 (global-flycheck-mode)
 
-;; Nano config
+;; Cosmetic config
 (add-to-list 'load-path "~/.config/nano-emacs")
 (require 'nano-layout)
-(require 'nano-theme-dark)
-(require 'nano-faces)
-(nano-faces)
+;(require 'nano-theme-dark)
+;(require nano-faces)
+;(nano-faces)
 (require 'nano-theme)
-(nano-theme)
+(set-frame-parameter nil 'fullscreen 'fullboth)
+(straight-use-package 'gruvbox-theme)
+(load-theme 'gruvbox-dark-soft t)
 
 ;; Splash Screen
 (add-hook 'after-init-hook 'about-emacs)
@@ -103,6 +105,17 @@
 (straight-use-package 'lsp-mode)
 (straight-use-package 'modern-cpp-font-lock)
 (add-hook 'c++-mode-hook #'modern-c++-font-lock-mode)
+
+;; Lisp Customization
+(straight-use-package 'slime)
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+(setq inferior-lisp-program "sbcl")
+(straight-use-package 'paredit)
+(add-hook 'lisp-mode-hook #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook #'display-line-numbers-mode)
+(load "~/quicklisp/log4slime-setup.el")
+(global-log4slime-mode 1)
+      
 
 ;; Better Defaults
 (setq visible-bell 1)
@@ -119,8 +132,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(desktop-save-mode 1)
- '(org-agenda-files '("~/org/todo.org")))
+ '(custom-enabled-themes '(modus-vivendi))
+ '(hl-sexp-background-color "#efebe9")
+ '(org-agenda-files '("~/Documents/todo/thruDenver.org")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
