@@ -224,7 +224,11 @@
 (straight-use-package 'slime)
 (straight-use-package 'lispy)
 (straight-use-package 'paredit)
-(add-to-list 'load-path "~/.emacs.d/slime-star")
+;; slime-star config
+(cond ((eq system-type 'gnu/linux)
+       (add-to-list 'load-path "~/.config/emacs/slime-star/"))
+      ((eq system-type 'windows-nt)
+       (add-to-list 'load-path "~/.emacs.d/slime-star")))
 (setq slime-contribs '(slime-fancy))
 (setq slime-contribs '(slime-star))
 (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
