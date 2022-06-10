@@ -1,0 +1,3 @@
+[submodule "slime-star"]
+	path = slime-star
+	url = https://github.com/mmontone/slime-star.git
